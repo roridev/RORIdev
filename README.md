@@ -5,6 +5,6 @@ The treasures
 ---
 Here is stored a **bunch** of old code that exists just to *remind me that i wrote it*. Read it with caution.  
 
-[Lolibase](https://github.com/LoliDevs/LoliBase) - Precursor of [sisbase](https://github.com/sisbaseorg/sisbase) (2019) \<c#>  
+[Lolibase](https://github.com/LoliDevs/LoliBase) (2019) - Precursor of [sisbase](https://github.com/sisbaseorg/sisbase) \<c#>  
 [QueueLoader](https://github.com/RORIdev/QueueLoader) - Script that waits in queue for earthmc (2019) \<python>  
 [Categorizer](https://github.com/RORIdev/Categorizer) - Macro that helps labeling a excel worksheet. (2020) \<Lame Excel Language (vba)>
