@@ -1,5 +1,5 @@
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=roridev&layout=compact&hide=vba&theme=onedark)
-<img src="https://github-readme-stats.vercel.app/api?username=roridev&count_private=true&theme=onedark&show_icons=true" height="140">)  
+<img src="https://github-readme-stats.vercel.app/api?username=roridev&count_private=true&theme=onedark&show_icons=true" height="140">    
 [![](https://i.imgur.com/onpkF2U.png)](http://osu.ppy.sh/users/8945532)
 
 The treasures
