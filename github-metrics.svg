@@ -1435,7 +1435,7 @@
                     <rect mask="url(#languages-bar)" x="442.2919009857592" y="0" width="6.673881921072231" height="8" fill="#f1e05a"/>
                     <rect mask="url(#languages-bar)" x="448.9657829068314" y="0" width="5.668861563698101" height="8" fill="#e34c26"/>
                     <rect mask="url(#languages-bar)" x="454.6346444705295" y="0" width="3.6874699935524755" height="8" fill="#3572A5"/>
-                    <rect mask="url(#languages-bar)" x="458.322114464082" y="0" width="1.677885535917994" height="8" fill="#ededed"/>
+                    <rect mask="url(#languages-bar)" x="458.322114464082" y="0" width="1.677885535917994" height="8" fill="#336790"/>
                 </svg>
                 <div class="field center horizontal-wrap fill-width">
                     <div class="field center no-wrap language">
@@ -1467,7 +1467,7 @@
                 Python
               </div>
                     <div class="field center no-wrap language">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill="#ededed" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill="#336790" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/></svg>
                 PLpgSQL
               </div>
                 </div>
@@ -1524,7 +1524,7 @@
             </section>
             <footer>
                 <span>These metrics include private contributions</span>
-                <span>Last updated 02/08/2021, 10:21  with lowlighter/metrics@3.11.0</span>
+                <span>Last updated 02/08/2021, 11:17  with lowlighter/metrics@3.11.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
