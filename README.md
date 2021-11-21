@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/roridev/RORIdev/master/github-metrics.svg)
+![](github-metrics.svg)
 
 The treasures
 ---
