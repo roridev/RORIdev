@@ -14,7 +14,7 @@ jobs:
         with:
           # Your GitHub token
           token: ${{ secrets.METRICS_TOKEN }}
-          repositories_forks: yes
+          repositories_forks: no
           plugin_languages: yes
           plugin_habits: yes
           plugin_followup: yes
