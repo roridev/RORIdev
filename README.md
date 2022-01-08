@@ -3,7 +3,7 @@ Cool shit i did for learning stuff
 There's the whole [learning](https://github.com/roridev/learning.git) repo but that one is boring and rarely updated, and i mostly stopped using it unless its a totally novel concept that draws my attention enough to save it as a [*core memory*](https://i.imgur.com/q5VmRfo.png) there.
 
 - [sampletex](https://github.com/roridev/sampletex) - Compilation, Haskell, AST.
-- [gaedients](https://github.com/roridev/sampletex) - Rust, File Formats.
+- [gaedients](https://github.com/roridev/gaedients) - Rust, File Formats.
 - [etternaOverlay](https://github.com/roridev/etternaOverlay) - Python, Channels, WebSockets.
 - [packr](https://github.com/roridev/packr) - Haskell, Stack.
 - [moesharp](https://github.com/roridev/moesharp) - Scraping, DOM.
