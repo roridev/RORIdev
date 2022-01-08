@@ -9,7 +9,7 @@ Here is stored a **bunch** of old code that exists just to *remind me that i wro
 
 Other Stuff
 ---
-[osu](https://osu.ppy.sh/users/9558549)<sub>i really should rename that account. oh well.</sub>  
+[osu](https://osu.ppy.sh/users/8945532)<sub>i really should rename that account. oh well.</sub>  
 [etterna](https://etternaonline.com/user/roridev)
 
 That SVG everyone uses
