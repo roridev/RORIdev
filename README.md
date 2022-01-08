@@ -5,10 +5,10 @@ There's the whole [learning](https://github.com/roridev/learning.git) repo but t
 - [sampletex](https://github.com/roridev/sampletex) - Compilation, Haskell, AST.
 - [gaedients](https://github.com/roridev/sampletex) - Rust, File Formats.
 - [etternaOverlay](https://github.com/roridev/etternaOverlay) - Python, Channels, WebSockets.
-- [packr](https://github.com/roridev/packr) = Haskell, Stack.
+- [packr](https://github.com/roridev/packr) - Haskell, Stack.
 - [moesharp](https://github.com/roridev/moesharp) - Scraping, DOM.
 
-
+*The fact that something is listed here doesn't mean i like the code i've written or that those are the examples that should be taken at face value this is just stuff i did i consider **not bad enough** to go to the section below.*
 
 The treasures
 ---
