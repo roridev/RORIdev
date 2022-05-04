@@ -7,6 +7,7 @@ There's the whole [learning](https://github.com/roridev/learning.git) repo but t
 - [etternaOverlay](https://github.com/roridev/etternaOverlay) - Python, Channels, WebSockets.
 - [packr](https://github.com/roridev/packr) - Haskell, Stack.
 - [moesharp](https://github.com/roridev/moesharp) - Scraping, DOM.
+- [aos_vxl](https://github.com/roridev/aox_vxl) - Binary File Formats, Rust.
 
 *The fact that something is listed here doesn't mean i like the code i've written this is just stuff i consider **not bad enough** to go to the section below.*
 
