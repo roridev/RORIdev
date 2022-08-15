@@ -16,8 +16,18 @@
 ;;; Package - Initialization
 (package-initialize)
 
+;;; UTF-8
+
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-language-environment 'utf-8)
+
 ;;;;;;;; use-package
-(package-install 'use-package)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package)
+  )
+
 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
@@ -33,9 +43,36 @@
 (use-package company-quickhelp)
 
 (use-package lsp-mode)
+
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-peek-always-show t)
+  (lsp-ui-sideline-show-hover t)
+  (lsp-ui-doc-enable nil))
+
+
 (use-package lsp-haskell)
+(use-package rustic
+  :bind (:map rustic-mode-map
+	      ("M-j" . lsp-ui-imenu)
+	      ("M-?" . lsp-find-references)
+	      ("C-c C-c l" . flycheck-list-errors)
+	      ("C-c C-c a" . lsp-execute-code-action)
+              ("C-c C-c r" . lsp-rename)
+              ("C-c C-c q" . lsp-workspace-restart)
+              ("C-c C-c Q" . lsp-workspace-shutdown)
+              ("C-c C-c s" . lsp-rust-analyzer-status))
+  :config
+  (setq rustic-format-trigger 'on-save)
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  )
+
+(use-package toml-mode)
+
 
 (use-package psc-ide)
+
 
 
 (use-package haskell-mode)
@@ -59,11 +96,18 @@
   (setq x-underline-at-descent-line t)
   )
 
+(use-package auctex
+  :config
+  (setq TeX-PDF-mode t)
+  (setq TeX-engine 'luatex)
+  )
 
-;;;;;;;; Themes
 
+;;;;;;;; Themes / Fonts
 (load-theme 'dracula t)
 
+(add-to-list 'default-frame-alist '(font . "Jetbrains Mono-10"))
+(set-face-attribute 'default nil :font "Jetbrains Mono-10")
 
 ;;;;;;;;; Modes
 
@@ -111,10 +155,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(use-package quelpa)))
+ '(package-selected-packages '(magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
