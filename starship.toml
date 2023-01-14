@@ -1,0 +1,111 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+##### Full Prompt
+
+#  alice @ alikindsys |  ~
+# ❯ echo "ello~"
+
+#  alice @ alikindsys |  ~
+#   ed36d39  master UNSTAGED  2 5
+# ❯ echo "ello~"
+
+# [palettes.aks]
+# tPink = '#F5A9B8'
+# tBlue = '#5BCEFA'
+# pWhite = '#FFFFFF'
+# ghMerged = '#6E5494'
+# ghOrange = '#c9510c'
+# ghBlue = '#4078c0'
+# ghGreen = '#6cc644'
+# ghGray = '#333333'
+# ghFa = '#fafafa'
+# cherry = '#D2042D'
+#
+# palette = 'aks'
+
+
+format = """
+ $username[ @ ](bg:#F5A9B8 fg:#333333)$hostname | $directory
+( $git_commit $git_branch ($git_state )($git_status )$git_metrics
+)❯ """
+
+add_newline = true
+
+
+
+### Computer/Path section
+
+# user @ machine |  shortened_path
+
+# Ex:
+# alice @ alikindsys |  ~
+# opc @  tempsoberana.siscode.org |  ~
+
+[username]
+format = '[ $user ]($style)'
+style_user = 'bg:#5BCEFA fg:#333333'
+style_root = 'bg:#c9510c fg:#fafafa'
+show_always = true
+
+[directory]
+format = '[$read_only]($read_only_style) [ $path]($style)'
+style = '#F5A9B8'
+before_repo_root_style = '#fafafa'
+repo_root_style = '#5BCEFA'
+read_only_style = '#c9510c'
+read_only = ''
+truncation_symbol = '/'
+
+[hostname]
+format = '[ $ssh_symbol$hostname ]($style)'
+style = 'bg:#FFFFFF fg:#333333'
+ssh_only = false
+ssh_symbol = ' '
+trim_at = ''
+
+
+### Git section
+
+#  short_hash  branch_name [Status] <Remote>
+
+### Remote
+
+#  ahead | behind OR 0
+
+# Ex:
+#  ed36d39  master OK  0
+#  ed36d39  master DETACHED  2 3 +2 -1
+#  ed36d39  master UNSTAGED  2 5
+#  ed36d39  master  MERGING  1 2
+#  ed36d39  master  REBASING  4 1
+
+[git_commit]
+format = '[ $hash]($style)'
+style = '#4078c0'
+commit_hash_length = 7
+only_detached = false
+
+
+[git_state]
+format = '$state [$progress_current](#4078c0) [$progress_total](#6cc644)'
+
+rebase = '[ REBASING](bg:#c9510c fg:#fafafa)'
+merge = '[ MERGING](#c9510c)'
+cherry_pick = '[ CHERRY](#D2042D)'
+revert = '[REVERTING](#4078c0)'
+bisect = '[BISECTING](#4078c0)'
+
+[git_branch]
+format = ' $branch'
+style = '#4078c0'
+
+[git_status]
+format = '( $conflicted $ahead $behind)'
+conflicted = '[](bg:ghOrange fg:#fafafa)'
+ahead = '[$count](bg:#6cc644 fg:#fafafa)'
+behind = '[$count](bg:#4078c0 fg:#fafafa)'
+
+[git_metrics]
+added_style = '#5BCEFA'
+deleted_style = '#F5A9B8'
+disabled = false
