@@ -1,3 +1,7 @@
+Things i actually want to work on
+---
+* SATKit - reinforcement learning for natural neural networks 
+
 Cool shit i did for learning stuff
 ---
 There's the whole [learning](https://github.com/roridev/learning.git) repo but that one is boring and rarely updated, and i mostly stopped using it unless its a totally novel concept that draws my attention enough to save it as a [*core memory*](https://i.imgur.com/q5VmRfo.png) there.
