@@ -249,6 +249,10 @@
 	trunklog = "log --oneline --graph --first-parent";
 	branchlog = "!git log --oneline --graph $1^-";
       };
+      signing = {
+        key = "511CB44BC7522A89";
+        signByDefault = true;
+      };
       extraConfig = {
         rebase.missingCommitCheck = "error";
         rerere = {
