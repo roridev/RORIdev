@@ -283,6 +283,7 @@
         gss="git status --short";
 	ls="eza";
 	ll="eza -l";
+        rebuild="sudo nixos-rebuild switch";
       };
       zplug = {
         enable = true;
