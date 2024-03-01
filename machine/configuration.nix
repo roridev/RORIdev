@@ -159,6 +159,10 @@
       jetbrains-toolbox
      ];
     
+    home.sessionPath = [
+      "/home/alikindsys/.cargo/bin"
+    ];
+
     programs.zoxide = {
       enable = true;
       options = ["--cmd cd"];
