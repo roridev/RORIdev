@@ -106,6 +106,12 @@
   programs.zsh.enable = true;
   environment.shells = with pkgs; [zsh];
 
+  # GnuPG
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alikindsys = {
     isNormalUser = true;
