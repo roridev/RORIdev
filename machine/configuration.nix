@@ -221,7 +221,7 @@
           format = "( ($conflicted )$ahead_behind)";
 	  conflicted = "[](bg:#C9510C fg:#fafafa)";
 	  ahead = "[$count](bg:#6cc644 fg:#fafafa)";
-	  behind = "[$count](bg:#6cc644 fg:#fafafa)";
+	  behind = "[$count](bg:#4078c0 fg:#fafafa)";
 	  diverged = "[$ahead_count](bg:#6cc644 fg:#fafafa) [$behind_count](bg:#4078c0 fg:#fafafa)";
 	  up_to_date = "[OK](fg:#6cc644)";
 	};
