@@ -295,6 +295,12 @@
 	  { name = "chisui/zsh-nix-shell"; tags = [as:plugin]; }
 	];
       };
+      initExtra = 
+      ''
+      bindkey "''${key[Up]}" up-line-or-search
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
+      '';
     };
     
    # environment.shells = with pkgs; [zsh];
