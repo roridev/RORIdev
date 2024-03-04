@@ -112,6 +112,9 @@
     enableSSHSupport = true;
   };
 
+  # Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alikindsys = {
     isNormalUser = true;
@@ -147,7 +150,7 @@
       git
       rustup
       typst
-      neovim
+#     neovim
       zsh
       discord
       keepassxc
@@ -157,6 +160,7 @@
       spotify
       eza
       jetbrains-toolbox
+      mpv
      ];
     
     home.sessionPath = [
@@ -166,6 +170,13 @@
     programs.zoxide = {
       enable = true;
       options = ["--cmd cd"];
+    };
+
+    programs.neovim = {
+      enable = true;
+      vimAlias = true;
+      viAlias = true;
+      defaultEditor = true;
     };
 
     programs.starship = {
@@ -327,7 +338,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+     wget
      jdk11
      jdk17
      jre8
