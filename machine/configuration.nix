@@ -1,15 +1,16 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-      <home-manager/nixos>
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
+    <home-manager/nixos>
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -50,8 +51,8 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Use X11 Instead of Wayland until either I switch from NVDA 
-  # or NVDA *and* LWJGL supports it fully. 
+  # Use X11 Instead of Wayland until either I switch from NVDA
+  # or NVDA *and* LWJGL supports it fully.
   services.xserver.displayManager.gdm.wayland = false;
 
   # Configure keymap in X11
@@ -87,9 +88,9 @@
   # services.xserver.libinput.enable = true;
 
   hardware.opengl = {
-     enable = true;
-     driSupport = true;
-     driSupport32Bit = true;
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -101,7 +102,7 @@
     # Experimental, Fixes the Corruption BS
     powerManagement.enable = true;
   };
- 
+
   # Set default shell as ZSH
   programs.zsh.enable = true;
   environment.shells = with pkgs; [zsh];
@@ -113,20 +114,20 @@
   };
 
   # Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alikindsys = {
     isNormalUser = true;
     description = "alikindsys";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
- };
+  };
 
   system.autoUpgrade = {
-     enable = true;
-     dates = "02:00";
-     randomizedDelaySec = "5min";
+    enable = true;
+    dates = "02:00";
+    randomizedDelaySec = "5min";
   };
 
   nix.gc = {
@@ -136,21 +137,21 @@
   };
 
   nix.optimise = {
-     automatic = true;
-     dates = ["02:30"];
+    automatic = true;
+    dates = ["02:30"];
   };
 
-  home-manager.users.alikindsys = {pkgs, ...} : {
-     nixpkgs.config.allowUnfree = true;
+  home-manager.users.alikindsys = {pkgs, ...}: {
+    nixpkgs.config.allowUnfree = true;
 
-     home.packages = with pkgs; [
+    home.packages = with pkgs; [
       firefox
       thunderbird
       prismlauncher
       git
       rustup
       typst
-#     neovim
+      #     neovim
       zsh
       discord
       keepassxc
@@ -161,8 +162,8 @@
       eza
       jetbrains-toolbox
       mpv
-     ];
-    
+    ];
+
     home.sessionPath = [
       "/home/alikindsys/.cargo/bin"
     ];
@@ -183,64 +184,63 @@
       enable = true;
       settings = {
         add_newline = true;
-        format = 
-''
- $username[@](bg:#F5A9B8 fg:#333333)$hostname | ($nix_shell )$directory 
-( $git_commit $git_branch ($git_state )($git_status )$git_metrics
-)❯ '';
-	username = {
+        format = ''
+           $username[@](bg:#F5A9B8 fg:#333333)$hostname | ($nix_shell )$directory 
+          ( $git_commit $git_branch ($git_state )($git_status )$git_metrics
+          )❯ '';
+        username = {
           format = "[$user]($style)";
-	  style_user = "bg:#5BCEFA fg:#333333";
-	  style_root = "bg:#C9510C fg:#FAFAFA";
-	  show_always = true;
-	};
-	directory = {
-	  format = "([$read_only]($read_only_style) )[ $path]($style)";
-	  style = "#F5A9B8";
-	  before_repo_root_style = "#FAFAFA";
-	  repo_root_style = "#5BCEFA";
-	  read_only_style = "#C9510C";
-	  read_only = "";
-	  truncation_symbol = "<many>/";
-	};
-	hostname = {
+          style_user = "bg:#5BCEFA fg:#333333";
+          style_root = "bg:#C9510C fg:#FAFAFA";
+          show_always = true;
+        };
+        directory = {
+          format = "([$read_only]($read_only_style) )[ $path]($style)";
+          style = "#F5A9B8";
+          before_repo_root_style = "#FAFAFA";
+          repo_root_style = "#5BCEFA";
+          read_only_style = "#C9510C";
+          read_only = "";
+          truncation_symbol = "<many>/";
+        };
+        hostname = {
           format = "[$ssh_symbol $hostname]($style)";
-	  style = "bg:#FFFFFF fg:#333333";
-	  ssh_only = false;
-	  ssh_symbol = "";
-	};
-	git_commit = {
+          style = "bg:#FFFFFF fg:#333333";
+          ssh_only = false;
+          ssh_symbol = "";
+        };
+        git_commit = {
           format = "[ $hash]($style)";
-	  style = "#4078C0";
-	  commit_hash_length = 7;
-	  only_detached = false;
-	};
-	git_state = {
-	  disabled = false;
-	  format = "$state [$progress_current](#4078C0) of [$progress_total](#6CC644)";
-	  rebase = "[ REBASING](bg:#c9510c fg:#fafafa)";
-	  merge = "[ MERGING](#c9510c)";
-	  cherry_pick = "[ CHERRY](#D2042D)";
-	  revert = "[REVERTING](#4078c0)";
-	  bisect = "[BISECTING](#4078c0)";
-	};
-	git_branch = {
-	  format = " $branch";
-	  style = "#4078C0";
-	};
-	git_status = {
-          format = "( ($conflicted )$ahead_behind)";
-	  conflicted = "[](bg:#C9510C fg:#fafafa)";
-	  ahead = "[$count](bg:#6cc644 fg:#fafafa)";
-	  behind = "[$count](bg:#4078c0 fg:#fafafa)";
-	  diverged = "[$ahead_count](bg:#6cc644 fg:#fafafa) [$behind_count](bg:#4078c0 fg:#fafafa)";
-	  up_to_date = "[OK](fg:#6cc644)";
-	};
-	git_metrics = {
+          style = "#4078C0";
+          commit_hash_length = 7;
+          only_detached = false;
+        };
+        git_state = {
           disabled = false;
-	  added_style = "#5BCEFA";
-	  deleted_style = "#F5A9B8";
-	};
+          format = "$state [$progress_current](#4078C0) of [$progress_total](#6CC644)";
+          rebase = "[ REBASING](bg:#c9510c fg:#fafafa)";
+          merge = "[ MERGING](#c9510c)";
+          cherry_pick = "[ CHERRY](#D2042D)";
+          revert = "[REVERTING](#4078c0)";
+          bisect = "[BISECTING](#4078c0)";
+        };
+        git_branch = {
+          format = " $branch";
+          style = "#4078C0";
+        };
+        git_status = {
+          format = "( ($conflicted )$ahead_behind)";
+          conflicted = "[](bg:#C9510C fg:#fafafa)";
+          ahead = "[$count](bg:#6cc644 fg:#fafafa)";
+          behind = "[$count](bg:#4078c0 fg:#fafafa)";
+          diverged = "[$ahead_count](bg:#6cc644 fg:#fafafa) [$behind_count](bg:#4078c0 fg:#fafafa)";
+          up_to_date = "[OK](fg:#6cc644)";
+        };
+        git_metrics = {
+          disabled = false;
+          added_style = "#5BCEFA";
+          deleted_style = "#F5A9B8";
+        };
       };
     };
 
@@ -250,19 +250,19 @@
       userEmail = "alice@blocovermelho.org";
       aliases = {
         track = "add";
-	untrack = "rm --cached";
-	unstage = "reset HEAD -- ";
-	reject = "restore --source=HEAD --staged --worktree -- ";
-	discard = "restore -- ";
-	staged = "diff --cached";
-	unstaged = "diff";
-	peek = "switch --detach";
-	detach = "switch --detach HEAD^0";
-	back = "switch \"-\"";
-	unpulled = "range-diff @...@{u}";
-	unpushed = "range-diff @{push}...@";
-	trunklog = "log --oneline --graph --first-parent";
-	branchlog = "!git log --oneline --graph $1^-";
+        untrack = "rm --cached";
+        unstage = "reset HEAD -- ";
+        reject = "restore --source=HEAD --staged --worktree -- ";
+        discard = "restore -- ";
+        staged = "diff --cached";
+        unstaged = "diff";
+        peek = "switch --detach";
+        detach = "switch --detach HEAD^0";
+        back = "switch \"-\"";
+        unpulled = "range-diff @...@{u}";
+        unpushed = "range-diff @{push}...@";
+        trunklog = "log --oneline --graph --first-parent";
+        branchlog = "!git log --oneline --graph $1^-";
       };
       signing = {
         key = "511CB44BC7522A89";
@@ -271,14 +271,14 @@
       extraConfig = {
         rebase.missingCommitCheck = "error";
         rerere = {
-	  enabled = true;
-	  autoUpdate = true;
+          enabled = true;
+          autoUpdate = true;
         };
         diff.algorithm = "patience";
         pull.ff = "only";
         merge = {
-	  ff = false;
-	  conflictStyle = "diff3";
+          ff = false;
+          conflictStyle = "diff3";
         };
         commit = {
           verbose = true;
@@ -289,38 +289,52 @@
     programs.zsh = {
       enable = true;
       shellAliases = {
-        glog="git log --oneline --graph";
-        gloga="git log --oneline --graph --all";
-        gss="git status --short";
-	ls="eza";
-	ll="eza -l";
-        rebuild="sudo nixos-rebuild switch";
+        glog = "git log --oneline --graph";
+        gloga = "git log --oneline --graph --all";
+        gss = "git status --short";
+        ls = "eza";
+        ll = "eza -l";
+        rebuild = "sudo nixos-rebuild switch";
       };
       zplug = {
         enable = true;
         plugins = [
-          { name = "zsh-users/zsh-autosuggestions"; tags =  [as:plugin]; }
-          { name = "zsh-users/zsh-syntax-highlighting"; tags = [as:plugin]; }
-          { name = "zsh-users/zsh-history-substring-search"; tags = [as:plugin]; }
-          { name = "heapbytes/heapbytes-zsh"; tags = [as:theme depth:1]; }
-	  { name = "chisui/zsh-nix-shell"; tags = [as:plugin]; }
-	];
+          {
+            name = "zsh-users/zsh-autosuggestions";
+            tags = [as:plugin];
+          }
+          {
+            name = "zsh-users/zsh-syntax-highlighting";
+            tags = [as:plugin];
+          }
+          {
+            name = "zsh-users/zsh-history-substring-search";
+            tags = [as:plugin];
+          }
+          {
+            name = "heapbytes/heapbytes-zsh";
+            tags = [as:theme depth:1];
+          }
+          {
+            name = "chisui/zsh-nix-shell";
+            tags = [as:plugin];
+          }
+        ];
       };
-      initExtra = 
-      ''
-      bindkey "''${key[Up]}" up-line-or-search
-      bindkey "^[[1;5C" forward-word
-      bindkey "^[[1;5D" backward-word
+      initExtra = ''
+        bindkey "''${key[Up]}" up-line-or-search
+        bindkey "^[[1;5C" forward-word
+        bindkey "^[[1;5D" backward-word
       '';
     };
-    
-   # environment.shells = with pkgs; [zsh];
+
+    # environment.shells = with pkgs; [zsh];
 
     home.stateVersion = "23.11";
   };
-  
+
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Iosevka" "FiraCode" "JetBrainsMono"]; })
+    (nerdfonts.override {fonts = ["Iosevka" "FiraCode" "JetBrainsMono"];})
   ];
 
   # Enable automatic login for the user.
@@ -337,11 +351,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     jdk11
-     jdk17
-     jre8
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    jdk11
+    jdk17
+    jre8
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -370,5 +384,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
